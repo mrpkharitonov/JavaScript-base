@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /////////////////задание 1
+        //пример 1 
+        let a = 1,
+            b = 1,
+            c, d;
+        c = ++a;
+        alert(c); // ответ: 2 потому-что a сначало увеличивается на 1 через ++ и потом в с присваиваем 2
+        //пример 2
+        d = b++;
+        alert(d); //ответ: 1 потому-что с начало присваем d единицу а после увеличиваем b на 1
+        //пример 3
+        c = 2 + ++a;
+        alert(c); //ответ: 5 потому-что в а уже 2 увеличиваем на 1 через ++ и добавляем к 2
+        //пример 4
+        d = 2 + b++;
+        alert(d); //ответ: 4 потому-что в b уже два суммируем 2 с 2 а после b увеличивается на 1
+        alert(a); //3 после 3х увеличений через ++
+        alert(b); //3 после 3х увеличений через ++
+
+
+        /////////////////задание 2
+        /*если вывод сделать после этих строк то 
+        в а будет 4, тк изначально задано 2 и после умножаем себяже на 2
+        в b будет 5, тк в а 4 + 1 = 5 (первым выполняется то что в скобках по приоритету)
+        */
+        let a = 2;
+        let x = 1 + (a *= 2);
+
+
+        /////////////////задание 3
+        let a = 5;
+        let b = 4;
+
+        if (a >= 0 && b >= 0) {
+            alert(a - b);
+        } else if (a < 0 && b < 0) {
+            alert(a * b);
+        } else if ((a < 0 && b >= 0) || (a >= 0 && b < 0)) {
+            alert(a + b);
+        } else {
+            alert("что-то другое")
+        }
+
+
+        /////////////////задание 4
+        function sum(num1, num2) {
+            return num1 + num2;
+        }
+
+        function raz(num1, num2) {
+            return num1 - num2;
+        }
+
+        function proiz(num1, num2) {
+            return num1 * num2;
+        }
+
+        function del(num1, num2) {
+            return num1 / num2;
+        }
+
+
+        /////////////////задание 5
+        function mathOperation(arg1, arg2, operation) {
+            switch (operation) {
+                case '+': 
+                    alert(sum(arg1, arg2));
+                    break;
+                case '-':
+                    alert(raz(arg1, arg2));
+                    break;
+                case '*': 
+                    alert(proiz(arg1, arg2));
+                    break;
+                case '/':
+                    alert(del(arg1, arg2));
+                    break;
+            }
+        }
+
+        mathOperation(1,3,'+');
+
+    </script>
+</body>
+
+</html>
