@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // меняю имена чтобы все поместилось в один файл
+        'use strict';
+
+        //задание 1.1
+
+        function Product5(name, price) {
+            this.name = name;
+            this.price = price;
+        }
+
+        Product5.prototype.make25PercentDiscount = function () {
+            this.price = this.price - this.price * 0.25
+        };
+
+        let product5 = new Product5('сосиска', 100);
+        product5.make25PercentDiscount();
+        alert("Продукт :"+ product5.name + " цена :" +product5.price);
+
+
+        class Product6 {
+            constructor(name, price) {
+                this.name = name;
+                this.price = price;
+            }
+
+            make25PercentDiscount() {
+                this.price = this.price - this.price * 0.25
+            }
+        }
+
+        let product6 = new Product6('колбаска', 100);
+        product6.make25PercentDiscount();
+        alert("Продукт :"+ product6.name + " цена :" +product6.price);
+
+        //задание 1.2
+
+        function Post5(author, text, date) {
+            this.author = author;
+            this.text = text;
+            this.date = date;
+        }
+
+        Post5.prototype.edit = function(text) {            
+            this.text = text;
+        };
+
+        function AttachedPost5(author, text, date) {
+            Post5.call(this, author, text, date);
+            this.highlighted = false;
+        }
+
+        AttachedPost5.prototype = Object.create(Post5.prototype);
+        AttachedPost5.prototype.constructor = AttachedPost5;
+
+        AttachedPost5.prototype.makeTextHighlighted = function() {
+            this.highlighted = true;
+        };
+
+        let attachedPostObj5 = new AttachedPost5('человек', 'текст', '2021.05.28 17:17');
+        attachedPostObj5.edit('другой текст');
+        attachedPostObj5.makeTextHighlighted();
+        alert("author :"+ attachedPostObj5.author + " text :" +attachedPostObj5.text + " date :" +attachedPostObj5.date + " highlighted :" +attachedPostObj5.highlighted);
+
+        
+
+        class Post6 {
+            constructor(author, text, date) {
+                this.author = author;
+                this.text = text;
+                this.date = date;
+            }
+
+            edit(text) {
+                this.text = text;
+            }
+        }
+
+        class AttachedPost6 extends Post6 {
+            constructor(author, text, date) {
+                super(author, text, date);
+                this.highlighted = false;
+            }
+
+            makeTextHighlighted() {
+                this.highlighted = true;
+            }
+        }
+
+        let attachedPostObj6 = new AttachedPost6('макака', 'каракули', '2021.05.28 16:16');
+        attachedPostObj6.edit('другие каракули');
+        attachedPostObj6.makeTextHighlighted();
+        alert("author :"+ attachedPostObj6.author + " text :" +attachedPostObj6.text + " date :" +attachedPostObj6.date + " highlighted :" +attachedPostObj6.highlighted);
+
+    </script>
+</body>
+
+</html>
